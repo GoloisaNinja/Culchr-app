@@ -1,0 +1,22 @@
+.lead-line {
+  width: 80%;
+  margin: 0 auto;
+  border-top: $green-color 2px solid;
+  font-size: 1.3rem;
+  padding-top: 1rem;
+  text-align: center;
+  font-weight: 300;
+}
+.goodbyeSwine {
+  color: $green-color;
+  text-align: center;
+}
+.test-def {
+  display: inline-flex;
+  flex-grow: 1;
+  text-align: left;
+  align-items: self;
+  justify-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+}

@@ -1,0 +1,46 @@
+.header {
+  background-color: $blue-color;
+  width: auto;
+  border-bottom: 1px solid darken($blue-color, 25%);
+}
+.about-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: right;
+  text-align: right;
+}
+.header__about {
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 0 1rem 1rem 0;
+  color: $white-color;
+  &:hover {
+    color: $green-color;
+  }
+}
+.brand-icon {
+  vertical-align: center;
+  color: $green-color;
+}
+.about-icon {
+  color: $green-color;
+}
+.text-primary {
+  color: $light-color;
+  font-weight: 300;
+  font-size: 2rem;
+}
+.branding {
+  font-size: 5rem;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+.culchrSpan {
+  padding-left: 1rem;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .branding {
+    font-size: 8rem;
+  }
+}
