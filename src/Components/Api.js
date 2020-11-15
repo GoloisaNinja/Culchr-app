@@ -149,7 +149,7 @@ const Api = ({ userInput }) => {
             </div>
           </div>
         </div>
-        <p className='goodbyeSwine'>Thank you for using Culchr.</p>
+        <p className='goodbyeSwine'>Thank you for using Culchr</p>
       </div>
     </Fragment>
   );

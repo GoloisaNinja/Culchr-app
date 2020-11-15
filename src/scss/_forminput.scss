@@ -1,5 +1,5 @@
 .form-intro {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   width: 80%;
 }
 .input {
@@ -9,16 +9,16 @@
   padding-top: 2rem;
 }
 .input-label {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 .input-input {
   background: $dark-color;
   border: none;
   border-bottom: darken($dark-color, 15%) 2px solid;
   margin: 1rem 0;
-  padding: 1rem;
+  padding: 1.2rem;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 .input > * {
   width: 100%;
@@ -30,7 +30,7 @@
   font-size: 1.5rem;
   border: none;
   border-bottom: darken($green-color, 20%) 2px solid;
-  padding: 1rem;
+  padding: 1.2rem;
   transition: all 0.2s ease-in;
   &:hover {
     background: lighten($green-color, 2%);
