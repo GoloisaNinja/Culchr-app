@@ -218,12 +218,12 @@ img {
 
 .form-intro {
   font-size: 1.4rem;
-  width: 83%; }
+  width: 90%; }
 
 .input {
   display: flex;
   flex-direction: column;
-  width: 83%;
+  width: 90%;
   padding-top: 2rem; }
 
 .input-label {
@@ -256,7 +256,7 @@ img {
 
 .btn-reset {
   background: #39486f;
-  width: 83%;
+  width: 90%;
   margin: 2rem auto;
   color: #5eafaf;
   font-size: 1.5rem;
@@ -311,7 +311,7 @@ img {
   margin: 0 auto; }
 
 .result-banner {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   background: #28324e;
   padding: 1rem;

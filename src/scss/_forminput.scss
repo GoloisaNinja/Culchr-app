@@ -1,11 +1,11 @@
 .form-intro {
   font-size: 1.4rem;
-  width: 83%;
+  width: 90%;
 }
 .input {
   display: flex;
   flex-direction: column;
-  width: 83%;
+  width: 90%;
   padding-top: 2rem;
 }
 .input-label {
@@ -40,7 +40,7 @@
 
 .btn-reset {
   background: darken($blue-color, 5%);
-  width: 83%;
+  width: 90%;
   margin: 2rem auto;
   color: $green-color;
   font-size: 1.5rem;
