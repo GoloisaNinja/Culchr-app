@@ -18,8 +18,7 @@ const PageNotFound = () => {
           </h3>
           <p className='about-text'>
             Great...you broke the internet. Take this time to reflect on your
-            bad choices and maybe user the Culchr icon in the header to navigate
-            back to a legitimate page of the application. Don't worry. We're
+            poor choices and bad taste in flavored waters. Don't worry. We're
             already judging you...so it really can't get much worse...
           </p>
         </div>

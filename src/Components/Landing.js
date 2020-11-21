@@ -4,24 +4,18 @@ import Reviews from './Reviews';
 import FormInput from './FormInput';
 
 const Landing = () => {
-  const [shouldHide, setHide] = useState({
-    hide: true,
-  });
-  const { hide } = shouldHide;
-  const handleReviews = (e) => {
-    e.preventDefault();
-    setHide({
-      hide: !hide,
-    });
-  };
+  const [shouldHide, setHide] = useState(true);
+
   return (
     <Fragment>
       <div className='container-lead'>
         <div className='lead'>
           <p>Corporate culture is hard.</p>
           <p>Let us make it easy.</p>
-          {hide ? (
-            <button className='review-hide' onClick={(e) => handleReviews(e)}>
+          {shouldHide ? (
+            <button
+              className='review-hide'
+              onClick={(e) => setHide(!shouldHide)}>
               <User
                 className='icon-pulse'
                 style={{ color: '#5eafaf' }}
@@ -30,7 +24,9 @@ const Landing = () => {
               Click for Reviews!
             </button>
           ) : (
-            <button className='review-hide' onClick={(e) => handleReviews(e)}>
+            <button
+              className='review-hide'
+              onClick={(e) => setHide(!shouldHide)}>
               <X
                 className='icon-pulse'
                 style={{ color: '#5eafaf' }}
@@ -40,7 +36,7 @@ const Landing = () => {
             </button>
           )}
         </div>
-        {!hide && <Reviews />}
+        {!shouldHide && <Reviews />}
         <p>Try Culchur for yourself!</p>
       </div>
       <FormInput />

@@ -56,20 +56,25 @@ const FormInput = () => {
           PowerPoint presentation and several hours of Human Resource meeting
           material to indoctrinate your employees with!
         </p>
-        <form className='input' onSubmit={(e) => handleInput(e)}>
-          <label className='input-label'>Enter a word</label>
-          <input
-            type='text'
-            name='userInput'
-            placeholder='try a buzzword, e.g. Power'
-            className='input-input'
-            required
-          />
-          {!reset && <button className='btn'>Get Culchr'd</button>}
-        </form>
+        {!reset && (
+          <Fragment>
+            <form className='input' onSubmit={(e) => handleInput(e)}>
+              <label className='input-label'>Enter a word</label>
+              <input
+                type='text'
+                name='userInput'
+                placeholder='try a buzzword, e.g. Power'
+                className='input-input'
+                required
+              />
+              <button className='btn'>Get Culchr'd</button>
+            </form>
+          </Fragment>
+        )}
+
         {reset && (
           <button className='btn-reset' onClick={(e) => handleReset(e)}>
-            Reset
+            Reset Form
           </button>
         )}
       </div>

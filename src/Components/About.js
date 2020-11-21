@@ -75,9 +75,8 @@ const About = () => {
             <a href='https://www.vecteezy.com/free-vector/advantage'>
               Advantage Vectors by Vecteezy
             </a>{' '}
-            Finally, I'd like to say Hi Marc, and Jarrett, stop backflipping off
-            dophins just to throw your car batteries in the ocean. You'll get
-            more batteries in there with less complicated maneuvers.
+            Finally, I'd like to say Hi Marc. Jarrett, I'd like to try the
+            gauntlet run on hippity-hops. Thoughts?
           </p>
         </div>
       </div>
