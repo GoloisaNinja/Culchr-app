@@ -12,9 +12,13 @@ const FormInput = () => {
 
   const { userInput, letterArr, phraseArr, reset } = data;
 
-  const getRandom = (arr) => {
+  const getRandom = (arr, popArr) => {
     const ran = Math.floor(Math.random() * arr.length);
-    return arr[ran];
+    if (!popArr.includes(arr[ran])) {
+      return arr[ran];
+    } else {
+      return getRandom(arr, popArr);
+    }
   };
   const handleReset = (e) => {
     setData({
@@ -27,14 +31,11 @@ const FormInput = () => {
     e.preventDefault();
     const userInput = e.target.elements.userInput.value.toLowerCase().trim();
     const letterArr = userInput.split('');
-    const phraseArr = [];
+    console.log(letterArr);
+    let phraseArr = [];
     letterArr.forEach((letter) => {
-      let phrase = getRandom(Phrases[letter]);
-      if (phraseArr.includes(phrase)) {
-        getRandom(Phrases[letter]);
-      } else {
-        phraseArr.push(phrase);
-      }
+      let phrase = getRandom(Phrases[letter], phraseArr);
+      phraseArr.push(phrase);
     });
     setData({
       ...data,
