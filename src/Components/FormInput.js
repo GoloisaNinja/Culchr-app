@@ -33,10 +33,21 @@ const FormInput = () => {
     const letterArr = userInput.split('');
     console.log(letterArr);
     let phraseArr = [];
-    letterArr.forEach((letter) => {
-      let phrase = getRandom(Phrases[letter], phraseArr);
-      phraseArr.push(phrase);
-    });
+    if (userInput === 'dennis') {
+      phraseArr = [
+        'demonstrate value',
+        'engage physically',
+        'nurturing dependence',
+        'neglect emotionally',
+        'inspire hope',
+        'separate entirely',
+      ];
+    } else {
+      letterArr.forEach((letter) => {
+        let phrase = getRandom(Phrases[letter], phraseArr);
+        phraseArr.push(phrase);
+      });
+    }
     setData({
       ...data,
       userInput,
