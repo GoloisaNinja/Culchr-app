@@ -73,8 +73,8 @@ const FormInput = (props) => {
     let phraseArr = [];
     let indexStr = '';
     letterArr.forEach((letter) => {
-      let { phrase, index } = getRandom(Phrases[letter], phraseArr);
-      phraseArr.push(phrase);
+      let { arr, index } = getRandom(Phrases[letter], phraseArr);
+      phraseArr.push(arr);
       indexStr = indexStr + index;
     });
     indexStr = indexStr.slice(0, -1);
