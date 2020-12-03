@@ -1,10 +1,26 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { User, X } from 'phosphor-react';
 import Reviews from './Reviews';
 import FormInput from './FormInput';
 
-const Landing = () => {
+const Landing = (props) => {
   const [shouldHide, setHide] = useState(true);
+  const { location } = props;
+
+  const [queryData, setQuery] = useState({
+    letters: null,
+    phrases: null,
+  });
+  const { letters, phrases } = queryData;
+  useEffect(() => {
+    const queryParam = new URLSearchParams(location.search);
+    const query = queryParam.get('query');
+    const phraseQuery = queryParam.get('phrases');
+    setQuery({
+      letters: query,
+      phrases: phraseQuery,
+    });
+  }, []);
 
   return (
     <Fragment>
@@ -39,7 +55,7 @@ const Landing = () => {
         {!shouldHide && <Reviews />}
         <p>Try Culchur for yourself!</p>
       </div>
-      <FormInput />
+      <FormInput query={letters} phraseQuery={phrases} />
     </Fragment>
   );
 };

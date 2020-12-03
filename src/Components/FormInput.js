@@ -1,26 +1,63 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Phrases from './Phrases';
 import FormOutput from './FormOutput';
 
-const FormInput = () => {
+const FormInput = (props) => {
   const [data, setData] = useState({
     userInput: '',
     letterArr: [],
     phraseArr: [],
     reset: false,
   });
-
   const { userInput, letterArr, phraseArr, reset } = data;
+
+  const handleQuery = (word, phraseIndex) => {
+    if (word) {
+      let letters = word.toLowerCase().trim();
+      const lettersArr = letters.split('');
+      const indexArr = phraseIndex.split('-');
+      let phrasesArr = [];
+      if (letters === 'dennis') {
+        phrasesArr = [
+          'demonstrate value',
+          'engage physically',
+          'nurturing dependence',
+          'neglect emotionally',
+          'inspire hope',
+          'separate entirely',
+        ];
+      } else {
+        for (let i = 0; i < lettersArr.length; i++) {
+          phrasesArr.push(Phrases[lettersArr[i]][indexArr[i]]);
+        }
+      }
+      setData({
+        ...data,
+        userInput: letters,
+        letterArr: lettersArr,
+        phraseArr: phrasesArr,
+        reset: true,
+      });
+    }
+  };
+
+  useEffect(() => {
+    handleQuery(props.query, props.phraseQuery);
+  }, [props.query, props.phraseQuery]);
 
   const getRandom = (arr, popArr) => {
     const ran = Math.floor(Math.random() * arr.length);
     if (!popArr.includes(arr[ran])) {
-      return arr[ran];
+      return {
+        arr: arr[ran],
+        index: ran + '-',
+      };
     } else {
       return getRandom(arr, popArr);
     }
   };
   const handleReset = (e) => {
+    window.location.href = 'http://www.culchr.pw';
     setData({
       ...data,
       reset: false,
@@ -29,32 +66,19 @@ const FormInput = () => {
 
   const handleInput = (e) => {
     e.preventDefault();
-    const userInput = e.target.elements.userInput.value.toLowerCase().trim();
+    const regex = /^[a-zA-z]*/g;
+    const allowedInput = e.target.elements.userInput.value.match(regex);
+    const userInput = allowedInput[0].toLowerCase().trim();
     const letterArr = userInput.split('');
-    console.log(letterArr);
     let phraseArr = [];
-    if (userInput === 'dennis') {
-      phraseArr = [
-        'demonstrate value',
-        'engage physically',
-        'nurturing dependence',
-        'neglect emotionally',
-        'inspire hope',
-        'separate entirely',
-      ];
-    } else {
-      letterArr.forEach((letter) => {
-        let phrase = getRandom(Phrases[letter], phraseArr);
-        phraseArr.push(phrase);
-      });
-    }
-    setData({
-      ...data,
-      userInput,
-      letterArr,
-      phraseArr,
-      reset: true,
+    let indexStr = '';
+    letterArr.forEach((letter) => {
+      let { phrase, index } = getRandom(Phrases[letter], phraseArr);
+      phraseArr.push(phrase);
+      indexStr = indexStr + index;
     });
+    indexStr = indexStr.slice(0, -1);
+    window.location.href = encodeURI(`?query=${userInput}&phrases=${indexStr}`);
     e.target.elements.userInput.value = '';
   };
 
@@ -71,14 +95,19 @@ const FormInput = () => {
         {!reset && (
           <Fragment>
             <form className='input' onSubmit={(e) => handleInput(e)}>
-              <label className='input-label'>Enter a word</label>
-              <input
-                type='text'
-                name='userInput'
-                placeholder='try a buzzword, e.g. Power'
-                className='input-input'
-                required
-              />
+              <div className='form-group'>
+                <input
+                  type='text'
+                  id='input'
+                  name='userInput'
+                  className='input-input'
+                  required
+                />
+                <label className='input-label' htmlFor='input'>
+                  Enter a buzzword
+                </label>
+              </div>
+
               <button className='btn'>Get Culchr'd</button>
             </form>
           </Fragment>

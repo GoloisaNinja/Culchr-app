@@ -2,15 +2,36 @@
   font-size: 1.4rem;
   width: 90%;
 }
+
 .input {
   display: flex;
   flex-direction: column;
   width: 90%;
   padding-top: 2rem;
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
 .input-label {
+  position: absolute;
+  top: 25%;
+  padding: 0.5rem 0 0 1rem;
+  transition: all 250ms;
+  opacity: 0.5;
   font-size: 1.4rem;
 }
+.input-input:focus + .input-label,
+.input-input:valid + .input-label {
+  font-size: 75%;
+  transform: translate3d(0, -160%, 0);
+  opacity: 1;
+}
+
 .input-input {
   background: $dark-color;
   border: none;

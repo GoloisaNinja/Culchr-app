@@ -229,8 +229,25 @@ img {
   width: 90%;
   padding-top: 2rem; }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 1rem; }
+
 .input-label {
+  position: absolute;
+  top: 25%;
+  padding: 0.5rem 0 0 1rem;
+  transition: all 250ms;
+  opacity: 0.5;
   font-size: 1.4rem; }
+
+.input-input:focus + .input-label,
+.input-input:valid + .input-label {
+  font-size: 75%;
+  transform: translate3d(0, -160%, 0);
+  opacity: 1; }
 
 .input-input {
   background: #696969;
@@ -431,3 +448,16 @@ img {
     opacity: 0; }
   100% {
     opacity: 1; } }
+
+.social {
+  max-width: 65rem;
+  margin: 0 auto; }
+
+.social-container {
+  width: 100%;
+  display: flex;
+  justify-content: center; }
+
+.social-icons {
+  margin: 2rem;
+  background-color: #5eafaf; }

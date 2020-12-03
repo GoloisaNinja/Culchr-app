@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { FloppyDisk, FileSearch, Rocket } from 'phosphor-react';
 import axios from 'axios';
+import Social from './Social';
 
 const Api = ({ userInput }) => {
   const [apiResults, setRes] = useState({
@@ -147,7 +148,9 @@ const Api = ({ userInput }) => {
       </div>
       <div>
         <p className='goodbyeSwine'>Thank you for using Culchr</p>
+        <p className='goodbyeSwine'>Share Culchr</p>
       </div>
+      <Social />
     </Fragment>
   );
 };
