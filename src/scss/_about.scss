@@ -1,33 +1,35 @@
 .lead-about {
-  width: 90%;
+	width: 90%;
 }
 .about-green {
-  font-weight: 700;
-  font-size: 3rem;
-  color: $green-color;
+	font-weight: 700;
+	font-size: 3rem;
+	color: $green-color;
 }
 .about-text {
-  padding: 1rem 0;
-  font-size: 1.4rem;
-  font-weight: 300;
+	padding: 1rem 0;
+	font-size: 1.4rem;
+	font-weight: 300;
 }
 .about-footer {
-  width: 90%;
-  padding-top: 2rem;
-  text-align: center;
-  font-size: 0.5rem;
-  color: $green-color;
+	width: 90%;
+	padding-top: 2rem;
+	text-align: center;
+	font-size: 0.5rem;
+	color: $green-color;
 }
 .jumpy {
-  animation-name: Fade;
-  animation-duration: 3s;
+	width: 100%;
+	height: auto;
+	animation-name: Fade;
+	animation-duration: 3s;
 }
 
 @keyframes Fade {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
