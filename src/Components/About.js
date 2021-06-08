@@ -7,7 +7,7 @@ const About = () => {
 				<div className='lead'>
 					<img
 						className='jumpy'
-						width='390'
+						width='400'
 						height='300'
 						src='https://i.imgur.com/uVA8J21.jpg'
 						alt='crazy man jumping over non-impressive chasm'
