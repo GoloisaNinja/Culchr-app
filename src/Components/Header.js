@@ -33,7 +33,7 @@ const Header = () => {
 					</div>
 					<div style={{ textAlign: 'center' }}>
 						<h2 className='header__text text-primary'>
-							Then all you need is culture.
+							Then all you need is Culchr!
 						</h2>
 					</div>
 				</div>
