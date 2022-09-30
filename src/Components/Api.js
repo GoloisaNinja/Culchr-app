@@ -14,22 +14,23 @@ const Api = ({ userInput }) => {
 	const inputUpper = userInput.toUpperCase();
 	const badForYou = [
 		`Implementing ${inputUpper} will dramatically downsize cost initiatives while pairing substantial velocity with core values.`,
-		`${inputUpper} is a more than a brand statement - it positions us to be more agile and averse to the adversarial.`,
+		`${inputUpper} is more than just a brand statement - it positions us to be more agile and averse to the adversarial.`,
 		`${inputUpper} allows us to think outside the box to empower our niche and utilize best practices.`,
 		`We need to shift the paradigm and ${inputUpper} will allow us to do that, action items are forthcoming.`,
 		`Flexing our human capital will be easier if we used ${inputUpper}, allowing us to drill down and identify risk.`,
 		`${inputUpper} is a game changer that will revolutionize our decruitment agendas and policies.`,
 		`We strongly believe that ${inputUpper} will allow us to synergize and homogenize earnings across our business vectors.`,
-		`Operationalizing ${inputUpper} will engender greater blue-sky thinking, and we anticipate marginalized net-net gain.`,
-		`Before ${inputUpper}, we had a siloed approach to encapsulation - ${inputUpper} gives us more of bleeding and leading edge.`,
-		`Let's recontextualize ${inputUpper}, we need to initiate a Tiger Team to evaluate and value add to the proposition.`,
-		`${inputUpper} allows us to ladder up to our framework and optimizes our social and moral consciousness.`,
+		`Operationalizing ${inputUpper} will engender greater blue-sky thinking, and we anticipate marginalized net-net gains.`,
+		`Before ${inputUpper}, we had a siloed approach to encapsulation - ${inputUpper} gives us more of a bleeding and leading edge.`,
+		`Let's recontextualize ${inputUpper}, we need actionable points to initiate a Tiger Team so we can evaluate scalable solutions.`,
+		`${inputUpper} allows us to ladder up to our framework to optimizes our social and moral consciousness to rationalize buy-in.`,
 		`${inputUpper} will allow for greater actualization of our systematic and overarching deliverables towards sustainablity.`,
 		`The 30,000 foot view is that ${inputUpper} will foster output of 110% within core competencies and derivative actionables.`,
 		`${inputUpper} might feel like a big ask initially - reference the scope document and let's take any concerns offline.`,
 		`${inputUpper} will ultimately add value and operationally open a dialog with our points of contact, so we can be same page.`,
-		`Reducing bottlenecks with ${inputUpper} is our proactive stance to address more with less.`,
-		`We can seamlessly integrate ${inputUpper} into our value-add props which should give our change agents more bandwidth.`,
+		`Reducing bottlenecks with ${inputUpper} is our proactive stance to address more with less at pace of market.`,
+		`We can seamlessly integrate ${inputUpper} into our value-add propositions which should give our change agents more bandwidth.`,
+		`At startup we were back-of-the-napkin, but with ${inputUpper}, we can stop wearing so many hats and circle back to our learnings and unpack our substance.`,
 	];
 	// MAKE RIDICULOUS ARRAY FOR FINAL PANEL
 	let outputArr = [];
