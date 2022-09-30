@@ -4,155 +4,159 @@ import axios from 'axios';
 import Social from './Social';
 
 const Api = ({ userInput }) => {
-  const [apiResults, setRes] = useState({
-    dictResponse: {},
-    thesResponse: {},
-    thesArray: [],
-    synsArray: [],
-  });
-  const { thesArray, synsArray } = apiResults;
-  const badForYou = [
-    `Now think of ways you can incorporate ${userInput} into your day.`,
-    `Imagine how you can be more productive with a sweet buzzword like ${userInput}.`,
-    `I want you to feel the word ${userInput} and drive it like you are Mad Max and ${userInput} is Fury Road.`,
-    `I need you to internalize ${userInput} so our executives can make more money.`,
-    `Let's all work to make ${userInput} a reality. And by let's, I mean you.`,
-    `By the end of the day, you should feel like you've showered in ${userInput}`,
-    `No one ever said buzzwords like ${userInput} were easy to live by. No, seriously, no one said that.`,
-    `If you haven't made a puppet and named it ${userInput} by the end of the week. You're fired.`,
-    `When you talk to customers, imagine yourself as Adele singing your new hit song named ${userInput}.`,
-    `If you want Pizza Friday's to continue to be a thing. You will learn to love ${userInput}.`,
-    `If you keep fighting us on implementing ${userInput}, I swear to all things holy we will make you work on Windows 8 touch exclusively.`,
-    `We don't want to threaten you. But if you don't adopt ${userInput}, we will make you fight for bananas in the monkey pit. Yes we have a monkey pit.`,
-    `Love ${userInput} or DIE. Hahaha, I'm kidding. But seriously. Love it. Love ${userInput}.`,
-  ];
-  // MAKE RIDICULOUS ARRAY FOR FINAL PANEL
-  let outputArr = [];
-  const badOutput = () => {
-    for (let i = 0; outputArr.length < 6; i++) {
-      let rand = Math.floor(Math.random() * badForYou.length);
-      if (!outputArr.includes(badForYou[rand])) {
-        outputArr.push(badForYou[rand]);
-      }
-    }
-  };
-  badOutput();
-  useEffect(() => {
-    const dictKey = process.env.REACT_APP_DICT_API;
-    const thesKey = process.env.REACT_APP_THES_API;
-    let thesDefs = [];
-    let thesSyns = [];
-    const thesApi = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${userInput}?key=${thesKey}`;
-    const colDictApi = `https://dictionaryapi.com/api/v3/references/collegiate/json/${userInput}?key=${dictKey}`;
-    const fetchData = async () => {
-      try {
-        // CALL API
-        const dictResult = await axios(colDictApi);
-        const thesResult = await axios(thesApi);
-        console.log(dictResult, thesResult);
-        // ERROR HANDLING - POPULATE ARRAYS WITH GOOD DYNAMICS OR BAD STATICS
-        if (
-          thesResult.data[0]['meta'] === undefined ||
-          thesResult.data[0]['shortdef'] === undefined
-        ) {
-          if (thesResult.data.length > 0) {
-            thesResult.data.map((el) => thesSyns.push(el));
-          } else {
-            thesSyns.push(
-              `The robot databases really could not find any words similar to ${userInput}.`
-            );
-          }
-        } else {
-          thesResult.data[0]['meta']['syns'].map((arr) =>
-            arr.map((val) => thesSyns.push(val))
-          );
-          thesResult.data.map((arr) =>
-            arr['shortdef'].map((el) => thesDefs.push(el))
-          );
-          dictResult.data.map((arr) =>
-            arr['shortdef'].map((el) => thesDefs.push(el))
-          );
-        }
-        // SET STATES
-        setRes({
-          dictResponse: dictResult,
-          thesResponse: thesResult,
-          thesArray: thesDefs.slice(0, 15),
-          synsArray: thesSyns.slice(0, 15),
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-  return (
-    <Fragment>
-      <div className='container-lead'>
-        <div className='lead-line'>
-          <p>Let's incorporate this into your corporates.</p>
-          <p>I don't know what that means either.</p>
-        </div>
-      </div>
-      <div className='container-defined'>
-        <div className='defined-margin'>
-          <p className='defined-lead'>
-            <FloppyDisk style={{ verticalAlign: 'bottom' }} size={30} /> YOUR
-            CULCHR DEFINED - WHAT DOES {userInput.toUpperCase()} MEAN?
-          </p>
-          {thesArray.length > 0 ? (
-            <ul className='defined-ul'>
-              {thesArray.map((val, index) => (
-                <li className='defined-li' key={index}>
-                  {val}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <Fragment>
-              <p className='defined-ul'>
-                Sorry, the robot databases could not match any definitions to{' '}
-                {userInput}. If we found anything similar, it will be below. If
-                available, try using one of these suggestions for a full Culchr
-                experience. Apologies for not matching your word...
-              </p>
-            </Fragment>
-          )}
-        </div>
-        <div className='defined-margin'>
-          <p className='defined-lead'>
-            <FileSearch style={{ verticalAlign: 'bottom' }} size={30} /> YOUR
-            CULCHR EXPANDED - WORDS SIMILAR TO {userInput.toUpperCase()}
-          </p>
-          <ul className='defined-ul'>
-            {synsArray.map((val, index) => (
-              <li className='defined-li' key={index}>
-                {val}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className='defined-margin'>
-          <p className='defined-lead'>
-            <Rocket style={{ verticalAlign: 'bottom' }} size={30} /> CULCHR'IZE
-            AND INDOCTRINATE - YOUR WORKERS WONT BRAINWASH THEMSELVES!
-          </p>
-          <ul className='defined-ul'>
-            {outputArr.map((val, index) => (
-              <li className='defined-li' key={index}>
-                {val}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div>
-        <p className='goodbyeSwine'>Thank you for using Culchr</p>
-        <p className='goodbyeSwine'>Share Culchr</p>
-      </div>
-      <Social />
-    </Fragment>
-  );
+	const [apiResults, setRes] = useState({
+		dictResponse: {},
+		thesResponse: {},
+		thesArray: [],
+		synsArray: [],
+	});
+	const { thesArray, synsArray } = apiResults;
+	const badForYou = [
+		`Implementing ${userInput} will dramatically downsize cost initiatives while pairing substantial velocity with core values.`,
+		`${userInput} is a more than a brand statement - it positions us to be more agile and averse to the adversarial.`,
+		`${userInput} allows us to think outside the box to empower our niche and utilize best practices.`,
+		`We need to shift the paradigm and ${userInput} will allow us to do that, action items are forthcoming.`,
+		`Flexing our human capital will be easier if we used ${userInput}, allowing us to drill down and identify risk.`,
+		`${userInput} is a game changer that will revolutionize our decruitment agendas and policies.`,
+		`We strongly believe that ${userInput} will allow us to synergize and homogenize earnings across our business vectors.`,
+		`Operationalizing ${userInput} will engender greater blue-sky thinking, and we anticipate marginalized net-net gain.`,
+		`Before ${userInput}, we had a siloed approach to encapsulation - ${userInput} gives us more of bleeding and leading edge.`,
+		`Let's recontextualize ${userInput}, we need to initiate a Tiger Team to evaluate and value add to the proposition.`,
+		`${userInput} allows us to ladder up to our framework and optimizes our social and moral consciousness.`,
+		`${userInput} will allow for greater actualization of our systematic and overarching deliverables towards sustainablity.`,
+		`The 30,000 foot view is that ${userInput} will foster output of 110% within core competencies and derivative actionables.`,
+		`${userInput} might feel like a big ask initially - reference the scope document and let's take any concerns offline.`,
+		`${userInput} will ultimately add value and operationally open a dialog with our points of contact, so we can be same page.`,
+		`Reducing bottlenecks with ${userInput} is our proactive stance to address more with less.`,
+		`We can seamlessly integrate ${userInput} into our value-add props which should give our change agents more bandwidth.`,
+	];
+	// MAKE RIDICULOUS ARRAY FOR FINAL PANEL
+	let outputArr = [];
+	const badOutput = () => {
+		for (let i = 0; outputArr.length < 6; i++) {
+			let rand = Math.floor(Math.random() * badForYou.length);
+			if (!outputArr.includes(badForYou[rand])) {
+				outputArr.push(badForYou[rand]);
+			}
+		}
+	};
+	badOutput();
+	useEffect(() => {
+		const dictKey = process.env.REACT_APP_DICT_API;
+		const thesKey = process.env.REACT_APP_THES_API;
+		let thesDefs = [];
+		let thesSyns = [];
+		const thesApi = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${userInput}?key=${thesKey}`;
+		const colDictApi = `https://dictionaryapi.com/api/v3/references/collegiate/json/${userInput}?key=${dictKey}`;
+		const fetchData = async () => {
+			try {
+				// CALL API
+				const dictResult = await axios(colDictApi);
+				const thesResult = await axios(thesApi);
+				console.log(dictResult, thesResult);
+				// ERROR HANDLING - POPULATE ARRAYS WITH GOOD DYNAMICS OR BAD STATICS
+				if (
+					thesResult.data[0]['meta'] === undefined ||
+					thesResult.data[0]['shortdef'] === undefined
+				) {
+					if (thesResult.data.length > 0) {
+						thesResult.data.map((el) => thesSyns.push(el));
+					} else {
+						thesSyns.push(
+							`The robot databases really could not find any words similar to ${userInput}.`
+						);
+					}
+				} else {
+					thesResult.data[0]['meta']['syns'].map((arr) =>
+						arr.map((val) => thesSyns.push(val))
+					);
+					thesResult.data.map((arr) =>
+						arr['shortdef'].map((el) => thesDefs.push(el))
+					);
+					dictResult.data.map((arr) =>
+						arr['shortdef'].map((el) => thesDefs.push(el))
+					);
+				}
+				// SET STATES
+				setRes({
+					dictResponse: dictResult,
+					thesResponse: thesResult,
+					thesArray: thesDefs.slice(0, 15),
+					synsArray: thesSyns.slice(0, 15),
+				});
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchData();
+	}, []);
+	return (
+		<Fragment>
+			<div className='container-lead'>
+				<div className='lead-line'>
+					<p>Let's incorporate this into your corporates.</p>
+					<p>I don't know what that means either.</p>
+				</div>
+			</div>
+			<div className='container-defined'>
+				<div className='defined-margin'>
+					<p className='defined-lead'>
+						<FloppyDisk style={{ verticalAlign: 'bottom' }} size={30} /> YOUR
+						CULCHR DEFINED - WHAT DOES {userInput.toUpperCase()} MEAN?
+					</p>
+					{thesArray.length > 0 ? (
+						<ul className='defined-ul'>
+							{thesArray.map((val, index) => (
+								<li className='defined-li' key={index}>
+									{val}
+								</li>
+							))}
+						</ul>
+					) : (
+						<Fragment>
+							<p className='defined-ul'>
+								Sorry, the robot databases could not match any definitions to{' '}
+								{userInput}. If we found anything similar, it will be below. If
+								available, try using one of these suggestions for a full Culchr
+								experience. Apologies for not matching your word...
+							</p>
+						</Fragment>
+					)}
+				</div>
+				<div className='defined-margin'>
+					<p className='defined-lead'>
+						<FileSearch style={{ verticalAlign: 'bottom' }} size={30} /> YOUR
+						CULCHR EXPANDED - WORDS SIMILAR TO {userInput.toUpperCase()}
+					</p>
+					<ul className='defined-ul'>
+						{synsArray.map((val, index) => (
+							<li className='defined-li' key={index}>
+								{val}
+							</li>
+						))}
+					</ul>
+				</div>
+				<div className='defined-margin'>
+					<p className='defined-lead'>
+						<Rocket style={{ verticalAlign: 'bottom' }} size={30} /> CULCHR'IZE
+						AND INDOCTRINATE - MEANINGLESS POWER PHRASES FOR EMAILS!
+					</p>
+					<ul className='defined-ul'>
+						{outputArr.map((val, index) => (
+							<li className='defined-li' key={index}>
+								{val}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+			<div>
+				<p className='goodbyeSwine'>Thank you for using Culchr</p>
+				<p className='goodbyeSwine'>Share Culchr</p>
+			</div>
+			<Social />
+		</Fragment>
+	);
 };
 
 export default Api;
